@@ -28,6 +28,7 @@ ChatBot::ChatBot(std::string filename)
 
     // load image into heap memory
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+
 }
 
 ChatBot::~ChatBot()
@@ -47,7 +48,7 @@ ChatBot::~ChatBot()
 ChatBot::ChatBot(const ChatBot &source){
      std::cout << "ChatBot Copy Constructor" << std::endl;
      //TODO DeepCopy
-     _image = source._image;
+     _image = new wxBitmap(*source._image);
      _chatLogic = source._chatLogic;
      _chatLogic->SetChatbotHandle(this);
      _rootNode = source._rootNode;
@@ -70,7 +71,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source){
         return *this;
     delete[] _image;
     //TODO Don't forget to copy the contents over from the source object here.
-    _image = new wxBitmap();
+    _image = new wxBitmap(*source._image);
     _chatLogic = source._chatLogic;
     _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
