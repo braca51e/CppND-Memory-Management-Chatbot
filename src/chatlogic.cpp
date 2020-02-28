@@ -26,12 +26,6 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
-    // delete all nodes
-    for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
-    {
-        it->release();
-    }
-
     ////
     //// EOF STUDENT CODE
 }
@@ -124,7 +118,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             // add all answers to current node
                             AddAllTokensToElement("ANSWER", tokens, **newNode);
                         }
-
+                        //TODO Here you should store the appropriate pointer type.
                         ////
                         //// EOF STUDENT CODE
                     }
