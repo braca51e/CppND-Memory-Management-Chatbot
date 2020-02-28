@@ -20,7 +20,7 @@ ChatBot::ChatBot()
 // constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
-    std::cout << "ChatBot Constructor " << this << std::endl;
+    std::cout << "ChatBot Constructor " << std::endl;
     
     // invalidate data handles
     _chatLogic = nullptr;
@@ -28,12 +28,11 @@ ChatBot::ChatBot(std::string filename)
 
     // load image into heap memory
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
-    std::cout << "ChatBot Constructor  _IMAGE " << _image << std::endl;
 }
 
 ChatBot::~ChatBot()
 {
-    std::cout << "ChatBot Destructor " << this << " " << _image << std::endl;
+    std::cout << "ChatBot Destructor " << std::endl;
 
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
@@ -55,7 +54,6 @@ ChatBot::ChatBot(const ChatBot &source){
 
 ChatBot::ChatBot(ChatBot &&source){
     std::cout << "ChatBot Move Constructor" << std::endl;
-    std::cout << "Moving instance: " << &source << " to: " << this << std::endl;
     _image = source._image;
     _chatLogic = source._chatLogic;
     _chatLogic->SetChatbotHandle(this);
@@ -66,7 +64,7 @@ ChatBot::ChatBot(ChatBot &&source){
 }
 
 ChatBot &ChatBot::operator=(const ChatBot &source){
-    std::cout << "ChatBot Copy Assignement Op: " << &source << " to: " << this << std::endl;
+    std::cout << "ChatBot Copy Assignement Op: " << std::endl;
     if(this == &source)
         return *this;
     delete[] _image;
@@ -78,7 +76,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source){
 }
 
 ChatBot &ChatBot::operator=(ChatBot &&source){
-   std::cout << "ChatBot Move Assignement Op: " << &source << " to: " << this << std::endl;
+   std::cout << "ChatBot Move Assignement Op " << std::endl;
    if(this == &source)
        return *this;
    delete[] _image;

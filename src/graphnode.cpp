@@ -10,7 +10,6 @@ GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-    //TODO _chatbot not owend here
     //delete _chatBot;
 
     ////
@@ -27,10 +26,6 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
     _parentEdges.push_back(edge);
 }
 
-//void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
-//{
-//    _childEdges.push_back(edge);
-//}
 void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 {
     _childEdges.push_back(std::move(edge));
@@ -38,7 +33,6 @@ void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 
 //// STUDENT CODE
 ////
-//void GraphNode::MoveChatbotHere(ChatBot *chatbot)
 void GraphNode::MoveChatbotHere(ChatBot chatbot)
 {
     _chatBot = std::move(chatbot);
